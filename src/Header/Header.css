@@ -1,0 +1,58 @@
+header {
+  padding: 10px 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #083549;
+}
+
+.logo .link-home {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  text-decoration: none;
+  color: #f0faff;
+}
+
+.logo .link-home img {
+  height: 50px;
+  width: 50px;
+}
+
+.navegation{
+  display: flex;
+  gap: 20px;
+}
+
+.navegation a {
+  text-decoration: none;
+  color: #f0faff;
+  padding: 15px;
+}
+
+.navegation a:hover {
+  border-bottom: 4px solid #f0faff;
+}
+
+.log{
+  display: flex;
+  gap: 20px;
+} 
+
+.log a{
+  text-decoration: none;
+  box-sizing: border-box;
+  color: #f0f9ff;
+  padding: 15px;
+}
+
+
+.log .cadastro{
+  border: 2px solid #f0f9ff;
+  border-radius: 10px;
+}
+
+.log .cadastro:hover{
+  background-color:#f0f9ff;
+  color: #082f49;
+}

@@ -1,0 +1,39 @@
+footer {
+    padding: 10px 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #083549;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    text-decoration: none;
+    color: #f0faff;
+}
+
+.logo img {
+    height: 50px;
+    width: 50px;
+}
+
+.informacao{
+    color:#f0faff;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.redes-sociais{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.redes-sociais img{
+    width: 20px;
+    height: 20px;
+}
