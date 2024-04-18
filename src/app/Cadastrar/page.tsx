@@ -11,6 +11,10 @@ export default function Cadastrar() {
         <div className="container">
           <h1>Cadastro</h1>
           <form className="dados">
+          <div className="dados-campos">
+              <label htmlFor="">CPF:</label>
+              <input type="text" placeholder="Informe seu CPF" />
+            </div>
             <div className="dados-campos">
               <label htmlFor="">Nome:</label>
               <input type="text" placeholder="Informe seu nome" />
@@ -20,8 +24,16 @@ export default function Cadastrar() {
               <input type="email" placeholder="Informe seu e-mail" />
             </div>
             <div className="dados-campos">
+              <label htmlFor="">Celular:</label>
+              <input type="tel" placeholder="Informe seu numero celular" />
+            </div>
+            <div className="dados-campos">
               <label htmlFor="">Data de Nascimento:</label>
               <input type="date" />
+            </div>
+            <div className="dados-campos">
+              <label htmlFor="">Endereço:</label>
+              <input type="text" placeholder="Informe seu endereço" />
             </div>
             <div className="dados-campos">
               <label htmlFor="">Senha:</label>
