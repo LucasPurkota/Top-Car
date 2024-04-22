@@ -1,8 +1,11 @@
+main{
+  height: 100vh;
+}
 .container {
-  margin-top: 40px;
+  margin-top: auto;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 14%;
+  margin-bottom: auto;
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -33,17 +36,4 @@
   background-color: #f0faff;
   border: 1px solid #083549;
   height: 30px;
-}
-
-.btn-login {
-  margin-top: 10px;
-  background-color: #bae8fd;
-  border: none;
-  border-radius: 10px;
-  height: 30px;
-}
-
-.btn-login:hover {
-  background-color: #7dd5fc;
-  cursor: pointer;
 }

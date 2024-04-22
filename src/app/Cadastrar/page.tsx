@@ -2,6 +2,7 @@ import React from "react";
 import './Cadastrar.css';
 import Header from "@/Header/Header";
 import Footer from "@/Footer/Footer";
+import Button from "@/Button/Button";
 
 export default function Cadastrar() {
   return (
@@ -43,7 +44,7 @@ export default function Cadastrar() {
               <label htmlFor="">Confirmação de Senha:</label>
               <input type="password" placeholder="Confirme sua senha" />
             </div>
-            <button className="btn-cadastro">Cadastrar</button>
+            <Button name="Cadastrar" />
           </form>
         </div>
       </main>

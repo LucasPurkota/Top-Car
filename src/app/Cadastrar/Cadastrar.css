@@ -34,16 +34,3 @@
   border: 1px solid #083549;
   height: 30px;
 }
-
-.btn-cadastro {
-  margin-top: 10px;
-  background-color: #bae8fd;
-  border: none;
-  border-radius: 10px;
-  height: 30px;
-}
-
-.btn-cadastro:hover {
-  background-color: #7dd5fc;
-  cursor: pointer;
-}

@@ -2,6 +2,7 @@ import React from "react";
 import './Login.css';
 import Header from "@/Header/Header";
 import Footer from "@/Footer/Footer";
+import Button from "@/Button/Button";
 
 export default function Login() {
   return (
@@ -19,7 +20,7 @@ export default function Login() {
               <label htmlFor="">Senha:</label>
               <input type="password" placeholder="Informe sua senha" />
             </div>
-            <button className="btn-login">Entrar</button>
+            <Button name="Entrar"/>
           </form>
         </div>
       </main>

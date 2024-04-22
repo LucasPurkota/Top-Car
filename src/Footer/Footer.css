@@ -19,10 +19,15 @@ footer {
     width: 50px;
 }
 
+.logo p {
+    padding-top: 12px;
+  }
+
 .informacao{
     color:#f0faff;
     display: flex;
     flex-direction: row;
+    padding-top: 10px;
     gap: 20px;
 }
 

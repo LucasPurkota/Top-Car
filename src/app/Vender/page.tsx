@@ -2,6 +2,8 @@ import React from "react";
 import './Vender.css';
 import Header from "@/Header/Header";
 import Footer from "@/Footer/Footer";
+import Button from "@/Button/Button";
+
 
 export default function Vender() {
   return (
@@ -39,7 +41,7 @@ export default function Vender() {
               <label htmlFor="">Imagens:</label>
               <input type="image" placeholder="Informe o Combustível" />
             </div>
-            <button className="btn-cadastro">Cadastrar venda</button>
+            <Button name="Cadastrar venda"/>
           </form>
         </div>
       </main>
