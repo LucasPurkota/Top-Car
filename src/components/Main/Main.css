@@ -6,6 +6,14 @@ main{
 }
 
 .carrosel img{
-    width: 99vw;
+    width: 100vw;
     height: 60vh;
+}
+
+.carrosVenda h1{
+    text-align: center;
+}
+
+.cardsCarrosVenda{
+    gap: 10px;
 }

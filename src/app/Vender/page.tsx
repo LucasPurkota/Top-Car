@@ -1,8 +1,8 @@
 import React from "react";
 import './Vender.css';
-import Header from "@/Header/Header";
-import Footer from "@/Footer/Footer";
-import Button from "@/Button/Button";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import Button from "@/components/Button/Button";
 
 
 export default function Vender() {
@@ -36,6 +36,10 @@ export default function Vender() {
             <div className="dados-campos">
               <label htmlFor="">Detalhes:</label>
               <input type="text" placeholder="Informe o Combustível" /> 
+            </div>
+            <div className="dados-campos">
+              <label htmlFor="">Valor:</label>
+              <input type="number" placeholder="Informe o valor" />
             </div>
             <div className="dados-campos">
               <label htmlFor="">Imagens:</label>

@@ -19,10 +19,6 @@ header {
   width: 50px;
 }
 
-.logo .link-home p {
-  padding-top: 12px;
-}
-
 .navegation{
   display: flex;
   gap: 20px;

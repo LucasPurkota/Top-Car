@@ -1,8 +1,8 @@
 import React from "react";
 import './Login.css';
-import Header from "@/Header/Header";
-import Footer from "@/Footer/Footer";
-import Button from "@/Button/Button";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
+import Button from "@/components/Button/Button";
 
 export default function Login() {
   return (
