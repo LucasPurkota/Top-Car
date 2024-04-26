@@ -3,9 +3,13 @@
   border-radius: 4px;
 }
 
+.card:hover{
+  background-color: #e0f4fe;
+}
+
 .card img{
   width: 100%;
-  height: 161px;
+  height: 40%;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }

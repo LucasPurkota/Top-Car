@@ -35,7 +35,7 @@ export default function Vender() {
             </div>
             <div className="dados-campos">
               <label htmlFor="">Detalhes:</label>
-              <input type="text" placeholder="Informe o Combustível" /> 
+              <input type="text" placeholder="Informe a descrição do veiculo" /> 
             </div>
             <div className="dados-campos">
               <label htmlFor="">Valor:</label>
@@ -43,7 +43,7 @@ export default function Vender() {
             </div>
             <div className="dados-campos">
               <label htmlFor="">Imagens:</label>
-              <input type="image" placeholder="Informe o Combustível" />
+              <input type="image" />
             </div>
             <Button name="Cadastrar venda"/>
           </form>
