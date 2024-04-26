@@ -1,0 +1,18 @@
+main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carrosVenda h1{
+  text-align: center;
+}
+
+.cardsCarrosVenda{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:center;
+  gap: 10px;
+}

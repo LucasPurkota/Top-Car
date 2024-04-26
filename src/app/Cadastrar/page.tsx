@@ -1,8 +1,8 @@
 import React from "react";
 import './Cadastrar.css';
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import Button from "@/components/Button/Button";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import Button from "../components/Button/Button";
 
 export default function Cadastrar() {
   return (

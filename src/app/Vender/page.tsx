@@ -1,11 +1,18 @@
 import React from "react";
 import './Vender.css';
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import Button from "@/components/Button/Button";
+import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
+import Button from "../components/Button/Button";
+import { useStore } from "../store/store";
+import { Venda } from "../store/store";
 
 
 export default function Vender() {
+  // const{createSale}=useStore()
+
+  // const handleSubmit = (data:Venda) =>{
+  //   console.log(data)
+  // }
   return (
     <>
       <Header />
@@ -42,10 +49,14 @@ export default function Vender() {
               <input type="number" placeholder="Informe o valor" />
             </div>
             <div className="dados-campos">
-              <label htmlFor="">Imagens:</label>
-              <input type="image" />
+              <label htmlFor="">Vendedor:</label>
+              <input type="text" placeholder="Informe o vendedor" />
             </div>
-            <Button name="Cadastrar venda"/>
+            <div className="dados-campos">
+              <label htmlFor="">Imagens:</label>
+              <input type="text" />
+            </div>
+            <Button /*onClick={handleSubmit}*/ name="Cadastrar venda"/>
           </form>
         </div>
       </main>

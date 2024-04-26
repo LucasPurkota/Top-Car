@@ -1,14 +1,11 @@
 .container {
-  margin-top: 40px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 14%;
+  margin: 5%;
   padding: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #083549;
-  width: 30%;
+  width: 40%;
   gap: 40px;
   color: #f0faff;
   border-radius: 30px;
@@ -18,7 +15,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 55%;
+  width: 70%;
 }
 
 .dados .dados-campos {
@@ -33,4 +30,10 @@
   background-color: #f0faff;
   border: 1px solid #083549;
   height: 30px;
+}
+
+@media (max-width: 1000px){
+  .container{
+    width: 60%;
+  }
 }

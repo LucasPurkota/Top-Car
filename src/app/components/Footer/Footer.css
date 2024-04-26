@@ -12,6 +12,7 @@ footer {
     gap: 10px;
     text-decoration: none;
     color: #f0faff;
+    align-items: center;
 }
 
 .logo img {
@@ -19,11 +20,20 @@ footer {
     width: 50px;
 }
 
+.logo p{
+    margin: 0;
+}
+
 .informacao{
     color:#f0faff;
     display: flex;
     flex-direction: row;
     gap: 20px;
+    align-items: center;
+}
+
+.informacao p{
+    margin: 0;
 }
 
 .redes-sociais{
@@ -36,4 +46,10 @@ footer {
 .redes-sociais img{
     width: 20px;
     height: 20px;
+}
+
+@media (max-width: 850px){
+    .informacao{
+        flex-direction: column;
+    }
 }

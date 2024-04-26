@@ -1,6 +1,7 @@
 .card{
   width: 18rem;
   border-radius: 4px;
+  border: 1px solid #000;
 }
 
 .card:hover{
@@ -20,15 +21,29 @@
 
 .card h2{
   font-size: 20px;
+  margin-bottom: 8px;
 }
+
 
 .card h3{
   font-size: 16px;
   margin: 0;
 }
 
+.card p{
+  margin-top: 0;
+}
+
 .card .localidade{
   border-top: 1px solid #baeafd;
   background-color: #f0faff;
   padding: 8px 16px;
+}
+
+.card Button{
+  display: none;
+}
+
+.card:hover Button{
+  display: block;
 }

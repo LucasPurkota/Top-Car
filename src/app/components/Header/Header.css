@@ -12,11 +12,16 @@ header {
   gap: 10px;
   text-decoration: none;
   color: #f0faff;
+  align-items: center;
 }
 
 .logo .link-home img {
   height: 50px;
   width: 50px;
+}
+
+.logo .link-home p{
+  margin: 0;
 }
 
 .navegation{

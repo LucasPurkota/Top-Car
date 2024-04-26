@@ -12,7 +12,7 @@ export default function Header() {
         </Link>
       </div>
       <nav className="navegation">
-        <a href="">Comprar</a>
+        <a href="/Comprar">Comprar</a>
         <Link href="/Vender">Vender</Link>
       </nav>
       <div className="log">
