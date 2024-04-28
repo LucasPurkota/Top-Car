@@ -1,7 +1,8 @@
+'use client'
 import React, {ReactNode} from "react";
 import './Cards.css';
 import Button from "../Button/Button";
-import { Usuario } from "@/app/store/store";
+
 
 interface params{
   id?: number;
@@ -23,7 +24,7 @@ const Cards = (values: params): ReactNode => {
       <h3>{values.subtitulo}</h3>
       <p>{values.texto2}</p>
       <p className="localidade">{values.local}</p>
-      <Button name="Ver detalhes" />
+      <Button name="Ver detalhes"/>
       </div>
     </div>
   );

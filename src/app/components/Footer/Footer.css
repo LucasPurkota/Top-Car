@@ -48,8 +48,15 @@ footer {
     height: 20px;
 }
 
-@media (max-width: 850px){
+@media (min-width: 600px) and (max-width: 850px){
     .informacao{
         flex-direction: column;
+    }
+}
+
+@media (max-width: 600px){
+    .informacao{
+        flex-direction: column;
+        
     }
 }

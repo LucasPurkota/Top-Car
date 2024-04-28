@@ -17,7 +17,7 @@ export default function Main() {
     setIndex(selectedIndex);
   };
   return (
-    <main>
+    <main className="container" >
       <Carousel className="carrosel" activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
           <img src="./carros1.jpeg" alt="carros1" />
@@ -29,16 +29,16 @@ export default function Main() {
         <Carousel.Item>
           <img src="./carros2.jpeg" alt="carros2" />
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Escolha hoje seu novo carro</h3>
+            <p>Descubra os melhores veículos para cada estilo de vida.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img src="./carros3.jpeg" alt="carros3" />
           <Carousel.Caption>
-            <h3>Third slide label</h3>
+            <h3>Hoje é o dia para conquistar seu sonho</h3>
             <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              Navegue por nossa galeria de carros de última geração.
             </p>
           </Carousel.Caption>
         </Carousel.Item>
@@ -49,7 +49,6 @@ export default function Main() {
           {vendas.map((venda) => <Cards img={venda.imagem} titulo={venda.marca} texto1={venda.modelo} subtitulo={venda.valor}
           texto2={venda.ano} local={venda.vendedor?.endereco}/>)}
         </div>
-        <Modal/>
       </div>
     </main>
   );

@@ -14,11 +14,11 @@ export default function Login() {
           <form className="dados">
             <div className="dados-campos">
               <label htmlFor="">E-mail:</label>
-              <input type="email" placeholder="Informe seu e-mail" />
+              <input type="email" placeholder="Informe seu e-mail" required/>
             </div>
             <div className="dados-campos">
               <label htmlFor="">Senha:</label>
-              <input type="password" placeholder="Informe sua senha" />
+              <input type="password" placeholder="Informe sua senha" required/>
             </div>
             <Button name="Entrar"/>
           </form>

@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header>
       <div className="logo">
-        <Link href="" className="link-home">
+        <Link href="/" className="link-home">
           <img src="./top-car-logo.png" alt="logo" />
           <p>Top Car</p>
         </Link>
