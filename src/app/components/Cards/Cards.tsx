@@ -1,11 +1,13 @@
 'use client'
-import React, {ReactNode} from "react";
+import React, { ReactNode, useState } from "react";
 import './Cards.css';
 import Button from "../Button/Button";
+import { useStore } from "@/app/store/store";
+import Modal from "react-modal";
 
 
-interface params{
-  id?: number;
+interface params {
+  id: number;
   img?: string;
   titulo?: string;
   texto1?: string;
@@ -15,16 +17,46 @@ interface params{
 }
 
 const Cards = (values: params): ReactNode => {
-  return(
+  const { getSaleData, vendaEscolhida } = useStore();
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const handleClick = (id: number) => {
+    getSaleData(id);
+    setIsOpen(true);
+  }
+
+  return (
     <div className="card">
-      <img src={values.img} alt=""/>
+      <img src={values.img} alt="" />
       <div className="cardBody">
-      <h2>{values.titulo}</h2>
-      <p>{values.texto1}</p>
-      <h3>{values.subtitulo}</h3>
-      <p>{values.texto2}</p>
-      <p className="localidade">{values.local}</p>
-      <Button name="Ver detalhes"/>
+        <h2>{values.titulo}</h2>
+        <p>{values.texto1}</p>
+        <h3>{values.subtitulo}</h3>
+        <p>{values.texto2}</p>
+        <p className="localidade">{values.local}</p>
+        <Button onClick={() => handleClick(values.id)} name="Ver detalhes" />
+        <Modal
+          isOpen={isOpen}
+          contentLabel="Modal"
+        >
+          <Button onClick={() => setIsOpen(false)} name="Fechar" />
+          <div className="detalhes">
+            <img src={vendaEscolhida.imagem} alt="" />
+            <div className="cardBody">
+              <h2>{vendaEscolhida.marca} {vendaEscolhida.modelo}</h2>
+              <h4><strong>Valor:</strong> R${vendaEscolhida.valor}</h4>
+              <p><strong>Ano:</strong> {vendaEscolhida.ano}</p>
+              <p><strong>Km:</strong> {vendaEscolhida.km}</p>
+              <p><strong>Combustivel:</strong> {vendaEscolhida.combustivel}</p>
+              <p><strong>Detalhes:</strong> {vendaEscolhida.detalhes}</p>
+              <p><strong>Vendedor:</strong> {vendaEscolhida.vendedor?.nome}</p>
+              <p><strong>Telefone:</strong> {vendaEscolhida.vendedor?.celular}</p>
+              <p><strong>Local:</strong> {vendaEscolhida.vendedor?.cidade}</p>
+              
+            </div>
+          </div>
+        </Modal>
       </div>
     </div>
   );

@@ -21,3 +21,15 @@ main{
     justify-content:center;
     gap: 10px;
 }
+
+@media (max-width: 600px) {
+    .carrosel img{
+        height: 30vh;
+    }
+    .carrosel h3{
+        font-size: 15px;
+    }
+    .carrosel p{
+        font-size: 10px;
+    }
+}

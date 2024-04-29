@@ -1,9 +1,10 @@
 header {
-  padding: 10px 100px;
+  padding: 10px 80px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   background-color: #083549;
+  overflow: auto;
 }
 
 .logo .link-home {
@@ -60,4 +61,10 @@ header {
 .log .cadastro:hover{
   background-color:#f0f9ff;
   color: #082f49;
+}
+
+@media (max-width: 600px) {
+  header{
+    padding: 20px;
+  }
 }

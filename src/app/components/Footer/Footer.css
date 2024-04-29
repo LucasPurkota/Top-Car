@@ -1,5 +1,5 @@
 footer {
-    padding: 10px 100px;
+    padding: 10px 80px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -55,8 +55,14 @@ footer {
 }
 
 @media (max-width: 600px){
+    footer{
+        flex-direction: column;
+        gap: 20px;
+    }
+    .logo, .redes-sociais{
+        justify-content: center;
+    }
     .informacao{
         flex-direction: column;
-        
     }
 }

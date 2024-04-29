@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Carousel from 'react-bootstrap/Carousel';
 import Cards from "../Cards/Cards";
 import './Main.css';
-import Modal from "../Modal/Modal";
 import { useStore } from "@/app/store/store";
 
 
@@ -28,7 +27,7 @@ export default function Main() {
         </Carousel.Item>
         <Carousel.Item>
           <img src="./carros2.jpeg" alt="carros2" />
-          <Carousel.Caption>
+          <Carousel.Caption> 
             <h3>Escolha hoje seu novo carro</h3>
             <p>Descubra os melhores veículos para cada estilo de vida.</p>
           </Carousel.Caption>
@@ -46,8 +45,8 @@ export default function Main() {
       <div className="carrosVenda">
         <h1 className="">Carros a Venda</h1>
         <div className="cardsCarrosVenda">
-          {vendas.map((venda) => <Cards img={venda.imagem} titulo={venda.marca} texto1={venda.modelo} subtitulo={venda.valor}
-          texto2={venda.ano} local={venda.vendedor?.endereco}/>)}
+          {vendas.map((venda, index) => <Cards key={index} id={venda.id} img={venda.imagem} titulo={venda.marca} texto1={venda.modelo} subtitulo={venda.valor}
+          texto2={venda.ano} local={venda.vendedor?.cidade}/>)}
         </div>
       </div>
     </main>

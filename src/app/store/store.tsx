@@ -1,7 +1,7 @@
 import {create} from 'zustand';
 
 export interface Venda{  
-  id?: number;
+  id: number;
   marca?: string;
   modelo?: string;
   ano?: string;
@@ -20,7 +20,7 @@ export interface Usuario{
   email?: string;
   celular?: string;
   dataNascimento?: string;
-  endereco?: string;
+  cidade?: string;
   senha?: string;
 }
 
@@ -29,7 +29,7 @@ interface UseStore{
   getSaleData: (id: number) => void;
   vendas: Venda[];
   usuarioEscolhido: Usuario;
-  getUserData: (id: number) => void;
+  getUserData: (email: string) => void;
   usuarios: Usuario[];
   createSale: (sale: Venda) => void;
   createUser: (user: Usuario) => void;
@@ -39,48 +39,50 @@ interface UseStore{
 export const useStore = create<UseStore>((set) => {
   return{
     //objects
-    vendaEscolhida:{},
+    vendaEscolhida:{id: 1, marca: "Toyota", modelo: "Corolla", ano: "2020", km: 15000, combustivel: "Gasolina",
+        detalhes: "Único dono, sem acidentes", valor: 80000, vendedor: {id: 1,cpf: '13844451960', nome: 'Lucas Daniel Purkota', email: 'lucaspurkota@gmail.com', celular: '41996793076', 
+        dataNascimento: '24102003', cidade: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "/corolla2020.jpeg"},
     usuarioEscolhido:{},
 
     //arrays
     vendas: [
       {id: 1, marca: "Toyota", modelo: "Corolla", ano: "2020", km: 15000, combustivel: "Gasolina",
         detalhes: "Único dono, sem acidentes", valor: 80000, vendedor: {id: 1,cpf: '13844451960', nome: 'Lucas Daniel Purkota', email: 'lucaspurkota@gmail.com', celular: '41996793076', 
-        dataNascimento: '24102003', endereco: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "/corolla2020.jpeg"},
+        dataNascimento: '24102003', cidade: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "/corolla2020.jpeg"},
       {id: 2, marca: "Honda", modelo: "Civic", ano: "2019", km: 20000, combustivel: "Flex",
         detalhes: "Revisões em dia", valor: 75000, vendedor: {id: 2,cpf: '11823061958', nome: 'Marllon de Lima', email: 'marllonlima2004@gmail.com', celular: '41997102392', 
-        dataNascimento: '24102003', endereco: 'Itaperuçu - PR', senha: 'marlin123'}, imagem: "./civic2019.jpg"},
+        dataNascimento: '24102003', cidade: 'Itaperuçu - PR', senha: 'marlin123'}, imagem: "./civic2019.jpg"},
       {id: 3, marca: "Volkswagen", modelo: "Golf", ano: "2018", km: 30000, combustivel: "Diesel",
         detalhes: "Bancos de couro, teto solar", valor: 70000, vendedor: {id: 1,cpf: '13844451960', nome: 'Lucas Daniel Purkota', email: 'lucaspurkota@gmail.com', celular: '41996793076', 
-        dataNascimento: '24102003', endereco: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "./golf2018.jpg"},
-      {id: 4, marca: "Mitsubishi", modelo: "Lancer 2.0", ano: "2018", km: 188000, combustivel: "Gasolina",
+        dataNascimento: '24102003', cidade: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "./golf2018.jpg"},
+      {id: 4, marca: "Mitsubishi", modelo: "Lancer", ano: "2018", km: 188000, combustivel: "Gasolina",
         detalhes: "Excelente estado de conservação", valor: 64900, vendedor: {id: 2,cpf: '11823061958', nome: 'Marllon de Lima', email: 'marllonlima2004@gmail.com', celular: '41997102392', 
-        dataNascimento: '24102003', endereco: 'Itaperuçu - PR', senha: 'marlin123'}, imagem: "./lancer.jpg"},
+        dataNascimento: '24102003', cidade: 'Itaperuçu - PR', senha: 'marlin123'}, imagem: "./lancer.jpg"},
       {id: 5, marca: "Chevrolet", modelo: "Onix", ano: "2019", km: 25000, combustivel: "Flex",
         detalhes: "Apenas um ano de uso", valor: 60000, vendedor: {id: 1,cpf: '13844451960', nome: 'Lucas Daniel Purkota', email: 'lucaspurkota@gmail.com', celular: '41996793076', 
-        dataNascimento: '24102003', endereco: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "./onix2019.jpeg"},
+        dataNascimento: '24102003', cidade: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "./onix2019.jpeg"},
       {id: 6, marca: "Toyota", modelo: "Corolla", ano: "2020", km: 15000, combustivel: "Gasolina",
         detalhes: "Único dono, sem acidentes", valor: 80000, vendedor: {id: 1,cpf: '13844451960', nome: 'Lucas Daniel Purkota', email: 'lucaspurkota@gmail.com', celular: '41996793076', 
-        dataNascimento: '24102003', endereco: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "./corolla2020.jpeg"},
+        dataNascimento: '24102003', cidade: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "./corolla2020.jpeg"},
       {id: 7, marca: "Honda", modelo: "Civic", ano: "2019", km: 20000, combustivel: "Flex",
         detalhes: "Revisões em dia", valor: 75000, vendedor: {id: 1,cpf: '13844451960', nome: 'Lucas Daniel Purkota', email: 'lucaspurkota@gmail.com', celular: '41996793076', 
-        dataNascimento: '24102003', endereco: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "./civic2019.jpg"},
+        dataNascimento: '24102003', cidade: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "./civic2019.jpg"},
       {id: 8, marca: "Volkswagen", modelo: "Golf", ano: "2018", km: 30000, combustivel: "Diesel",
         detalhes: "Bancos de couro, teto solar", valor: 70000, vendedor: {id: 2,cpf: '11823061958', nome: 'Marllon de Lima', email: 'marllonlima2004@gmail.com', celular: '41997102392', 
-        dataNascimento: '24102003', endereco: 'Itaperuçu - PR', senha: 'marlin123'}, imagem: "./golf2018.jpg"},
-      {id: 9, marca: "Mitsubishi", modelo: "Lancer 2.0", ano: "2018", km: 188000, combustivel: "Gasolina",
+        dataNascimento: '24102003', cidade: 'Itaperuçu - PR', senha: 'marlin123'}, imagem: "./golf2018.jpg"},
+      {id: 9, marca: "Mitsubishi", modelo: "Lancer", ano: "2018", km: 188000, combustivel: "Gasolina",
         detalhes: "Excelente estado de conservação", valor: 64900, vendedor: {id: 1,cpf: '13844451960', nome: 'Lucas Daniel Purkota', email: 'lucaspurkota@gmail.com', celular: '41996793076', 
-        dataNascimento: '24102003', endereco: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "./lancer.jpg"},
+        dataNascimento: '24102003', cidade: 'São José dos Pinhais - PR', senha: 'Lucas.2410'}, imagem: "./lancer.jpg"},
       {id: 10, marca: "Chevrolet", modelo: "Onix", ano: "2019", km: 25000, combustivel: "Flex",
         detalhes: "Apenas um ano de uso", valor: 60000, vendedor: {id: 2,cpf: '11823061958', nome: 'Marllon de Lima', email: 'marllonlima2004@gmail.com', celular: '41997102392', 
-        dataNascimento: '24102003', endereco: 'Itaperuçu - PR', senha: 'marlin123'}, imagem: "./onix2019.jpeg"},
+        dataNascimento: '24102003', cidade: 'Itaperuçu - PR', senha: 'marlin123'}, imagem: "./onix2019.jpeg"},
     ],
 
     usuarios: [
       {id: 1,cpf: '13844451960', nome: 'Lucas Daniel Purkota', email: 'lucaspurkota@gmail.com', celular: '41996793076', 
-      dataNascimento: '24102003', endereco: 'São José dos Pinhais - PR', senha: 'Lucas.2410'},
+      dataNascimento: '24102003', cidade: 'São José dos Pinhais - PR', senha: 'Lucas.2410'},
       {id: 2,cpf: '11823061958', nome: 'Marllon de Lima', email: 'marllonlima2004@gmail.com', celular: '41997102392', 
-      dataNascimento: '24102003', endereco: 'Itaperuçu - PR', senha: 'marlin123'},
+      dataNascimento: '24102003', cidade: 'Itaperuçu - PR', senha: 'marlin123'},
     ],
 
 
@@ -88,8 +90,8 @@ export const useStore = create<UseStore>((set) => {
     getSaleData:(id) => set((state) => ({
       vendaEscolhida:state.vendas.filter(item=>item.id==id)[0]
     })),
-    getUserData:(id) => set((state) => ({
-      usuarioEscolhido:state.usuarios.filter(item=>item.id==id)[0]
+    getUserData:(email) => set((state) => ({
+      usuarioEscolhido:state.usuarios.filter(item=>item.email==email)[0]
     })),
     createSale:(sale) => set((state) => ({
       vendas:[...state.vendas,sale]
