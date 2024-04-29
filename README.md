@@ -7,9 +7,9 @@
 
 <div style="display: inline_block">
   <p>
-    Lucas Daniel Purkota
-
-    
+    Lucas Daniel Purkota    
+  </p>
+  <p>
     Marllon de Lima Francor
-</p>
+  </p>
 </div>
