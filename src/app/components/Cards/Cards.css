@@ -57,3 +57,10 @@
   width: 300px;
   height: 168px;
 }
+
+@media (max-width: 420px){
+  .detalhes img{
+    width: 200px;
+    height: 120px;
+  }
+}

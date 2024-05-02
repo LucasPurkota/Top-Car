@@ -8,7 +8,7 @@ interface params{
 }
 
 const Button = (values: params): ReactNode => {
-  return(<button type={values.type} onClick={values.onClick}> {values.name} </button>)
+  return(<button className="button" type={values.type} onClick={values.onClick}> {values.name} </button>)
 }
 
 export default Button;

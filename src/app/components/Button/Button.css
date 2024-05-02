@@ -1,4 +1,4 @@
-button{
+.button{
   margin-top: 10px;
   background-color: #bae8fd;
   border: none;
@@ -6,7 +6,7 @@ button{
   height: 30px;
 }
 
-button:hover {
+.button:hover {
   background-color: #7dd5fc;
   cursor: pointer;
 }
