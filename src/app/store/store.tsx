@@ -33,6 +33,8 @@ interface UseStore{
   usuarios: Usuario[];
   createSale: (sale: Venda) => void;
   createUser: (user: Usuario) => void;
+  createUserDB: (user: Usuario) => void;
+  getUserDataDB: (user: Usuario) => void;
 }
 
 
@@ -98,6 +100,32 @@ export const useStore = create<UseStore>((set) => {
     })),
     createUser:(user) => set((state) => ({
       usuarios:[...state.usuarios,user]
-    }))
+    })),
+    createUserDB:async(user) => {
+       await fetch('http://localhost:4000/api/usuario/create',{
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+      })
+    },
+    getUserDataDB:async(user) => {
+      await fetch('http://localhost:4000/api/usuario/getUserId',{
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      })
+      .then((res) => {
+        console.log(res)
+        // set({usuarioEscolhido: res.json()})
+      })
+    }
   }
 })

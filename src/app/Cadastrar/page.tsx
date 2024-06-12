@@ -18,12 +18,12 @@ export default function Cadastrar() {
   const [nome, setNome] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [celular, setCelular] = useState<string>('');
-  const [dataNascimento, setDataNascimento] = useState<string>('');
+  const [dataNascimento, setDataNascimento] = useState<string>();
   const [cidade, setCidade] = useState<string>('');
   const [senha, setSenha] = useState<string>('');
   const [confSenha, setConfSenha] = useState<string>('');
 
-  const { createUser } = useStore();
+  const { createUserDB } = useStore();
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -37,7 +37,7 @@ export default function Cadastrar() {
         cidade: cidade,
         senha: senha,
       }
-      createUser(usuario);
+      createUserDB(usuario);
       setMessage('Cadastro realizado com sucesso');
       setShowMessage(true);
     } else {

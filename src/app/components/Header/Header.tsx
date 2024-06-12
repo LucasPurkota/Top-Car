@@ -25,6 +25,7 @@ export default function Header() {
         <Link href="/Vender">Vender</Link>
       </nav>
       <div className="log">
+      <Link className="perfil" href="/Perfil">Perfil</Link>
         <Link className="login" href="/Login">Login</Link>
         <Link className="cadastro" href="/Cadastrar">Cadastrar</Link>
       </div>

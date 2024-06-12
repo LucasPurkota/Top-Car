@@ -5,9 +5,9 @@ import './Login.css';
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import Button from "../components/Button/Button";
-import { useStore } from "../store/store";
+import { useStore, Usuario } from "../store/store";
 import { useState } from "react";
-import Modal from "react-modal";
+import Modal from "react-modal"
 
 
 export default function Login() {
@@ -18,11 +18,15 @@ export default function Login() {
   const [email, setEmail] = useState<string>('');
   const [senha, setSenha] = useState<string>('');
 
-  const {getUserData, usuarioEscolhido} = useStore();
+  const {getUserDataDB, usuarioEscolhido} = useStore();
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    getUserData(email);
+    const usuario: Usuario = {
+      email: email,
+      senha: senha,
+    }
+    getUserDataDB(usuario);
     if(usuarioEscolhido.senha == senha){
       setMessage('Login efetuado com sucesso');
       setShowMessage(true);
