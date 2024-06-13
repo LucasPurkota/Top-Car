@@ -85,7 +85,7 @@ export default function Cadastrar() {
               <label htmlFor="">Confirmação de Senha:</label>
               <input value={confSenha} onChange={(e) => setConfSenha(e.target.value)} type="password" placeholder="Confirme sua senha" required />
             </div>
-            <Button type="submit" name="Cadastrar" />
+            <Button className="confirm" type="submit" name="Cadastrar" />
             <Modal
               isOpen={showMessage}
               contentLabel="Modal"

@@ -1,6 +1,8 @@
 import React from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
+import Button from "../components/Button/Button";
+import './Perfil.css'
 
 export default function Perfil(){
   return(
@@ -42,8 +44,9 @@ export default function Perfil(){
             <label htmlFor="">Confirmação de Senha:</label>
             <input type="password" placeholder="Confirme sua senha" required />
           </div>
-          {/* <Button type="submit" name="Cadastrar" />
-          <Modal
+          <Button className="confirm" type="submit" name="Editar Perfil" />
+          <Button className="delete" type="button" name="Excluir Perfil" />
+          {/* <Modal
             isOpen={showMessage}
             contentLabel="Modal"
           >

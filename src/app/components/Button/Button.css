@@ -1,4 +1,4 @@
-.button{
+.confirm{
   margin-top: 10px;
   background-color: #bae8fd;
   border: none;
@@ -6,7 +6,20 @@
   height: 30px;
 }
 
-.button:hover {
+.confirm:hover {
   background-color: #7dd5fc;
+  cursor: pointer;
+}
+
+.delete{
+  margin-top: 10px;
+  background-color: #ff0000;
+  border: none;
+  border-radius: 10px;
+  height: 30px;
+}
+
+.delete:hover {
+  background-color: #ff5757;
   cursor: pointer;
 }

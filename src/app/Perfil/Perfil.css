@@ -1,0 +1,41 @@
+.container {
+  margin: 5%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40%;
+  gap: 40px;
+  color: #000;
+  border-radius: 30px;
+}
+
+.dados {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 70%;
+}
+
+.dados .dados-campos {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  gap: 5px;
+  width: 100%;
+}
+
+.dados .dados-campos input {
+  background-color: #f0faff;
+  border: 1px solid #083549;
+  height: 30px;
+}
+
+@media (max-width: 600px){
+  .container{
+    width: 100%;
+    padding: 0;
+    padding-bottom: 15px;
+    border-radius: 0;
+  }
+}

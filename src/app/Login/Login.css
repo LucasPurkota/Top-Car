@@ -7,10 +7,9 @@ main{
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #083549;
   width: 30%;
   gap: 40px;
-  color: #f0faff;
+  color: #000;
   border-radius: 30px;
 }
 

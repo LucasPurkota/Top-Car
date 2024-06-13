@@ -43,6 +43,7 @@ header {
 .log{
   display: flex;
   gap: 20px;
+  align-items: center;
 } 
 
 .log a{
@@ -52,6 +53,14 @@ header {
   padding: 15px;
 }
 
+.log .perfil{
+  padding: 5px;
+}
+
+.log .perfil img{
+  height: 50px;
+  width: 50px;
+}
 
 .log .cadastro{
   border: 2px solid #f0f9ff;

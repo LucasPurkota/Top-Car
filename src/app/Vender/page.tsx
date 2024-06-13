@@ -91,7 +91,7 @@ export default function Vender() {
               <label htmlFor="">Imagens:</label>
               <input type="text" required/>
             </div>
-            <Button type="submit" name="Cadastrar venda"/>
+            <Button className="confirm" type="submit" name="Cadastrar venda"/>
             <Modal
               isOpen={showMessage}
               contentLabel="Modal"

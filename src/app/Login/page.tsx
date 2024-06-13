@@ -27,6 +27,7 @@ export default function Login() {
       senha: senha,
     }
     getUserDataDB(usuario);
+    console.log(usuarioEscolhido.senha);
     if(usuarioEscolhido.senha == senha){
       setMessage('Login efetuado com sucesso');
       setShowMessage(true);
@@ -51,7 +52,7 @@ export default function Login() {
               <label htmlFor="">Senha:</label>
               <input value={senha} onChange={(e) => setSenha(e.target.value)} type="password" placeholder="Informe sua senha" required/>
             </div>
-            <Button type="submit" name="Entrar"/>
+            <Button className="confirm" type="submit" name="Entrar"/>
             <Modal
               isOpen={showMessage}
               contentLabel="Modal"
