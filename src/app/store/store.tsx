@@ -25,16 +25,19 @@ export interface Usuario {
 }
 
 interface UseStore {
-  vendaEscolhida: Venda;
-  getSaleData: (id: number) => void;
   vendas: Venda[];
-  usuarioEscolhido: Usuario;
-  getUserData: (email: string) => void;
-  usuarios: Usuario[];
+  vendaEscolhida: Venda;
   createSale: (sale: Venda) => void;
+  createSaleDB: (sale: Venda) => void;
+
+  usuarios: Usuario[];
+  usuarioEscolhido: Usuario;
   createUser: (user: Usuario) => void;
   createUserDB: (user: Usuario) => void;
   getUserDataDB: (user: Usuario) => void;
+
+  getUserData: (email: string) => void;
+  getSaleData: (id: number) => void;
 }
 
 
@@ -169,6 +172,19 @@ export const useStore = create<UseStore>((set) => {
         .then((data) => {
           console.log(data);
           useStore.setState({usuarioEscolhido: data})
+        })
+    },
+    createSaleDB: async (sale) => {
+      await fetch('http://localhost:4000/api/venda/create', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sale),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data)
         })
     }
   }
