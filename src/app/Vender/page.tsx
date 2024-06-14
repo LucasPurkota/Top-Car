@@ -26,7 +26,7 @@ export default function Vender() {
   const [vendedor, setVendedor] = useState<Usuario>();
   const [imagem, setImagem] = useState<string>('');
 
-  const { createUser } = useStore();
+  const { createUser, usuarioEscolhido } = useStore();
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -41,7 +41,6 @@ export default function Vender() {
         detalhes: detalhes,
         valor: valor,
         vendedor: vendedor,
-        imagem: imagem,
       }
       createUser(venda);
       setMessage('Venda cadastrada realizado com sucesso');
@@ -84,12 +83,8 @@ export default function Vender() {
               <input type="number" placeholder="Informe o valor" required/>
             </div>
             <div className="dados-campos">
-              <label htmlFor="">Vendedor:</label>
-              <input type="text" placeholder="Informe o vendedor" required/>
-            </div>
-            <div className="dados-campos">
               <label htmlFor="">Imagens:</label>
-              <input type="text" required/>
+              <input type="file"/>
             </div>
             <Button className="confirm" type="submit" name="Cadastrar venda"/>
             <Modal

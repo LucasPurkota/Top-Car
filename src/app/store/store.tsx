@@ -38,6 +38,8 @@ interface UseStore {
 
   getUserData: (email: string) => void;
   getSaleData: (id: number) => void;
+
+  isLogged: boolean;
 }
 
 
@@ -52,6 +54,7 @@ export const useStore = create<UseStore>((set) => {
       }, imagem: "/corolla2020.jpeg"
     },
     usuarioEscolhido: {},
+    isLogged: false,
 
     //arrays
     vendas: [
@@ -166,19 +169,25 @@ export const useStore = create<UseStore>((set) => {
         })
     },
     getUserDataDB: async (user) => {
-      await fetch('http://localhost:4000/api/usuario/getEmail', {
-        method: 'POST',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data[0]);
-          useStore.setState({ usuarioEscolhido: data[0] })
-          return data[0]
-        })
+      try {
+        const response = await fetch('http://localhost:4000/api/usuario/getEmail', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        });
+    
+        const data = await response.json();
+        if (data && data.length > 0) {
+          useStore.setState({ usuarioEscolhido: data[0] });
+          return data[0];
+        }
+        return null;
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+        return null;
+      }
     },
     createSaleDB: async (sale) => {
       await fetch('http://localhost:4000/api/venda/create', {

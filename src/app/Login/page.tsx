@@ -12,10 +12,8 @@ import Modal from "react-modal"
 
 export default function Login() {
 
-  const { getUserDataDB, usuarioEscolhido } = useStore();
-  useEffect(() => {
+  const { getUserDataDB, isLogged } = useStore();
 
-  }, [getUserDataDB])
   const [showMessage, setShowMessage] = useState<boolean>(false);
   const [message, setMessage] = useState<string>('Login efetuado com sucesso');
 
@@ -23,22 +21,24 @@ export default function Login() {
   const [senha, setSenha] = useState<string>('');
 
 
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const usuario: Usuario = {
       email: email,
       senha: senha,
     }
-    getUserDataDB(usuario)
-    console.log(usuarioEscolhido);
-    if (usuarioEscolhido.senha == senha) {
-      setMessage('Login efetuado com sucesso');
-      setShowMessage(true);
-    } else {
-      setMessage('Usuario ou senha incorretos');
-      setShowMessage(true);
+    try {
+      const data = await getUserDataDB(usuario);
+      if (data && data.senha === senha) {
+        setMessage('Login efetuado com sucesso');
+        useStore.setState({ isLogged: true });
+      } else {
+        setMessage('Usuario ou senha incorretos');
+      }
+    } catch (error) {
+      setMessage('Erro ao fazer login. Tente novamente.');
     }
-
+    setShowMessage(true);
   }
 
   return (

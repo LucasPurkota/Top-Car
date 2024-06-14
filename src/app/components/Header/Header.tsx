@@ -1,14 +1,17 @@
 
 'use client'
-import React, {useState} from "react";
+import React, { useState } from "react";
 import './Header.css';
 import Link from "next/link";
+import { useStore } from "@/app/store/store";
 
 export default function Header() {
 
+  const { isLogged } = useStore();
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const openMobile = () =>{
+  const openMobile = () => {
     setIsOpen(!isOpen);
   }
 
@@ -25,9 +28,9 @@ export default function Header() {
         <Link href="/Vender">Vender</Link>
       </nav>
       <div className="log">
-        <Link className="perfil" href="/Perfil"><img src="./user.png" alt="Perfil" /></Link>
-        <Link className="login" href="/Login">Login</Link>
-        <Link className="cadastro" href="/Cadastrar">Cadastrar</Link>
+        {!isLogged && <Link className="login" href="/Login">Login</Link>}
+        {!isLogged && <Link className="cadastro" href="/Cadastrar">Cadastrar</Link>}
+        {isLogged && <Link className="perfil" href="/Perfil"><img src="./user.png" alt="Perfil" /></Link>}
       </div>
       <div className="navigation-mobile">
         <button onClick={openMobile} className="menu-hamburguer">
@@ -36,8 +39,9 @@ export default function Header() {
         {isOpen && <div className="navigation-hamburguer">
           <Link className="links-mobile" href="/Comprar">Comprar</Link>
           <Link className="links-mobile" href="/Vender">Vender</Link>
-          <Link className=" links-mobile login" href="/Login">Login</Link>
-          <Link className="links-mobile cadastro" href="/Cadastrar">Cadastrar</Link>
+          {!isLogged && <Link className="login" href="/Login">Login</Link>}
+          {!isLogged && <Link className="cadastro" href="/Cadastrar">Cadastrar</Link>}
+          {isLogged && <Link className="perfil" href="/Perfil">Perfil</Link>}
         </div>}
       </div>
     </header>
