@@ -34,7 +34,7 @@ interface UseStore {
   usuarioEscolhido: Usuario;
   createUser: (user: Usuario) => void;
   createUserDB: (user: Usuario) => void;
-  getUserDataDB: (user: Usuario) => void;
+  getUserDataDB: (user: Usuario) => Usuario;
 
   getUserData: (email: string) => void;
   getSaleData: (id: number) => void;
@@ -165,13 +165,19 @@ export const useStore = create<UseStore>((set) => {
           console.log(data)
         })
     },
-    getUserDataDB:async() => {
-      await fetch('http://localhost:4000/api/usuario/getEmail',
-        { method: "GET" })
+    getUserDataDB: async (user) => {
+      await fetch('http://localhost:4000/api/usuario/getEmail', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
-          useStore.setState({usuarioEscolhido: data})
+          console.log(data[0]);
+          useStore.setState({ usuarioEscolhido: data[0] })
+          return data[0]
         })
     },
     createSaleDB: async (sale) => {

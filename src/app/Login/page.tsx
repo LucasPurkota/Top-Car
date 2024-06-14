@@ -1,6 +1,6 @@
 'use client'
 
-import React, { FormEvent } from "react";
+import React, { FormEvent, useEffect } from "react";
 import './Login.css';
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
@@ -12,13 +12,16 @@ import Modal from "react-modal"
 
 export default function Login() {
 
+  const { getUserDataDB, usuarioEscolhido } = useStore();
+  useEffect(() => {
+
+  }, [getUserDataDB])
   const [showMessage, setShowMessage] = useState<boolean>(false);
   const [message, setMessage] = useState<string>('Login efetuado com sucesso');
 
   const [email, setEmail] = useState<string>('');
   const [senha, setSenha] = useState<string>('');
 
-  const {getUserDataDB, usuarioEscolhido} = useStore();
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -26,15 +29,16 @@ export default function Login() {
       email: email,
       senha: senha,
     }
-    getUserDataDB(usuario);
-    console.log(usuarioEscolhido.senha);
-    if(usuarioEscolhido.senha == senha){
+    getUserDataDB(usuario)
+    console.log(usuarioEscolhido);
+    if (usuarioEscolhido.senha == senha) {
       setMessage('Login efetuado com sucesso');
       setShowMessage(true);
-    }else{
+    } else {
       setMessage('Usuario ou senha incorretos');
       setShowMessage(true);
     }
+
   }
 
   return (
@@ -46,13 +50,13 @@ export default function Login() {
           <form onSubmit={handleSubmit} className="dados">
             <div className="dados-campos">
               <label htmlFor="">E-mail:</label>
-              <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Informe seu e-mail" required/>
+              <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Informe seu e-mail" required />
             </div>
             <div className="dados-campos">
               <label htmlFor="">Senha:</label>
-              <input value={senha} onChange={(e) => setSenha(e.target.value)} type="password" placeholder="Informe sua senha" required/>
+              <input value={senha} onChange={(e) => setSenha(e.target.value)} type="password" placeholder="Informe sua senha" required />
             </div>
-            <Button className="confirm" type="submit" name="Entrar"/>
+            <Button className="confirm" type="submit" name="Entrar" />
             <Modal
               isOpen={showMessage}
               contentLabel="Modal"
@@ -63,7 +67,7 @@ export default function Login() {
           </form>
         </div>
       </main>
-      <Footer/>
+      <Footer />
     </>
   );
 }
