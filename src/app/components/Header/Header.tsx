@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import './Header.css';
 import Link from "next/link";
 import { useStore } from "@/app/store/store";
+import Button from "../Button/Button";
 
 export default function Header() {
 
@@ -31,6 +32,7 @@ export default function Header() {
         {!isLogged && <Link className="login" href="/Login">Login</Link>}
         {!isLogged && <Link className="cadastro" href="/Cadastrar">Cadastrar</Link>}
         {isLogged && <Link className="perfil" href="/Perfil"><img src="./user.png" alt="Perfil" /></Link>}
+        {isLogged && <Button name="" img=""/>}
       </div>
       <div className="navigation-mobile">
         <button onClick={openMobile} className="menu-hamburguer">
@@ -42,6 +44,7 @@ export default function Header() {
           {!isLogged && <Link className="login" href="/Login">Login</Link>}
           {!isLogged && <Link className="cadastro" href="/Cadastrar">Cadastrar</Link>}
           {isLogged && <Link className="perfil" href="/Perfil">Perfil</Link>}
+          {isLogged && <Link className="perfil" href="/Perfil">Log out</Link>}
         </div>}
       </div>
     </header>

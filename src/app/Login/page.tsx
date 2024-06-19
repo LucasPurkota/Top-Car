@@ -12,7 +12,7 @@ import Modal from "react-modal"
 
 export default function Login() {
 
-  const { getUserDataDB, isLogged } = useStore();
+  const { getUserDataDB, usuarioEscolhido } = useStore();
 
   const [showMessage, setShowMessage] = useState<boolean>(false);
   const [message, setMessage] = useState<string>('Login efetuado com sucesso');
@@ -39,6 +39,7 @@ export default function Login() {
       setMessage('Erro ao fazer login. Tente novamente.');
     }
     setShowMessage(true);
+    console.log(usuarioEscolhido);
   }
 
   return (
