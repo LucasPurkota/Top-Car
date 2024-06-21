@@ -8,12 +8,17 @@ import Button from "../Button/Button";
 
 export default function Header() {
 
-  const { isLogged } = useStore();
+  const { isLogged, usuarioEscolhido } = useStore();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const openMobile = () => {
     setIsOpen(!isOpen);
+  }
+
+  const logout = () => {
+    useStore.setState({ isLogged: false });
+    useStore.setState({ usuarioEscolhido: {} });
   }
 
   return (
@@ -32,7 +37,7 @@ export default function Header() {
         {!isLogged && <Link className="login" href="/Login">Login</Link>}
         {!isLogged && <Link className="cadastro" href="/Cadastrar">Cadastrar</Link>}
         {isLogged && <Link className="perfil" href="/Perfil"><img src="./user.png" alt="Perfil" /></Link>}
-        {isLogged && <Button name="" img=""/>}
+        {isLogged && <button onClick={logout} className="log-out"><img src="./logout.png" alt="logout" /></button>}
       </div>
       <div className="navigation-mobile">
         <button onClick={openMobile} className="menu-hamburguer">
@@ -44,7 +49,7 @@ export default function Header() {
           {!isLogged && <Link className="login" href="/Login">Login</Link>}
           {!isLogged && <Link className="cadastro" href="/Cadastrar">Cadastrar</Link>}
           {isLogged && <Link className="perfil" href="/Perfil">Perfil</Link>}
-          {isLogged && <Link className="perfil" href="/Perfil">Log out</Link>}
+          {isLogged && <button onClick={logout} className="log-out">Log out</button>}
         </div>}
       </div>
     </header>

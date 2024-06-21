@@ -16,9 +16,7 @@ export default function Perfil() {
   const [message, setMessage] = useState<string>('Login efetuado com sucesso');
   
   const { updateUserDB, usuarioEscolhido, deleteUserDB } = useStore();
-  useEffect(() =>{
-    console.log(usuarioEscolhido.id)
-  })
+
 
   const [cpf, setCpf] = useState<string>(usuarioEscolhido.cpf || '');
   const [nome, setNome] = useState<string>(usuarioEscolhido.nome || '');

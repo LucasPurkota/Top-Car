@@ -8,6 +8,7 @@ import Button from "../components/Button/Button";
 import { useStore, Usuario } from "../store/store";
 import { useState } from "react";
 import Modal from "react-modal"
+import { link } from "fs";
 
 
 export default function Login() {
@@ -39,7 +40,6 @@ export default function Login() {
       setMessage('Erro ao fazer login. Tente novamente.');
     }
     setShowMessage(true);
-    console.log(usuarioEscolhido);
   }
 
   return (
@@ -63,7 +63,7 @@ export default function Login() {
               contentLabel="Modal"
             >
               <p>{message}</p>
-              <button onClick={() => setShowMessage(false)}>Fechar</button>
+              <Button className="confirm" onClick={() => setShowMessage(false)} name="Fechar" />
             </Modal>
           </form>
         </div>

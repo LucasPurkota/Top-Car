@@ -13,6 +13,19 @@ export interface Venda {
   imagem?: string;
 }
 
+export interface TesteVenda {
+  id?: string;
+  marca?: string;
+  modelo?: string;
+  ano?: string;
+  km?: number;
+  combustivel?: string;
+  detalhes?: string;
+  valor?: number;
+  vendedor?: string;
+  // imagem?: string;
+}
+
 export interface Usuario {
   id?: string;
   cpf?: string;
@@ -28,8 +41,9 @@ interface UseStore {
   vendas: Venda[];
   vendaEscolhida: Venda;
   createSale: (sale: Venda) => void;
-  createSaleDB: (sale: Venda) => void;
+  createSaleDB: (sale: TesteVenda) => void;
   getSaleDataDBAll: () => void;
+  vendasTeste: TesteVenda[];
 
   usuarios: Usuario[];
   usuarioEscolhido: Usuario;
@@ -58,6 +72,7 @@ export const useStore = create<UseStore>((set) => {
     },
     usuarioEscolhido: {},
     isLogged: false,
+    vendasTeste: [],
 
     //arrays
     vendas: [
@@ -213,12 +228,11 @@ export const useStore = create<UseStore>((set) => {
       });
     },
     deleteUserDB: async (id) =>{
-      await fetch('http://localhost:4000/api/usuario/delete/${id}', {
+      await fetch(`http://localhost:4000/api/usuario/delete/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(id),
       })
       .then(response => response.json())
       .then(data => console.log(data))
@@ -242,10 +256,10 @@ export const useStore = create<UseStore>((set) => {
     getSaleDataDBAll: async () => {
       try {
         const response = await fetch('http://localhost:4000/api/venda/getAll', 
-          {method: 'POST',});
+          {method: 'GET',});
         const data = await response.json();
         if (data && data.length > 0) {
-          useStore.setState({ vendas: data });
+          useStore.setState({ vendasTeste: data });
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
