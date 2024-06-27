@@ -7,7 +7,7 @@ import Modal from "react-modal";
 
 
 interface params {
-  id: number;
+  id: string;
   img?: string;
   titulo?: string;
   texto1?: string;
@@ -17,11 +17,11 @@ interface params {
 }
 
 const Cards = (values: params): ReactNode => {
-  const { getSaleData, vendaEscolhida } = useStore();
+  const { getSaleData, getUserData, vendaEscolhida, vendedor } = useStore();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const handleClick = (id: number) => {
+  const handleClick = (id: string) => {
     getSaleData(id);
     setIsOpen(true);
   }
@@ -42,7 +42,7 @@ const Cards = (values: params): ReactNode => {
         >
           <Button onClick={() => setIsOpen(false)} name="Fechar" />
           <div className="detalhes">
-            <img src={vendaEscolhida.imagem} alt="" />
+            {/* <img src={vendaEscolhida.imagem} alt="" /> */}
             <div className="cardBody">
               <h2>{vendaEscolhida.marca} {vendaEscolhida.modelo}</h2>
               <h4><strong>Valor:</strong> R${vendaEscolhida.valor}</h4>
@@ -50,9 +50,9 @@ const Cards = (values: params): ReactNode => {
               <p><strong>Km:</strong> {vendaEscolhida.km}</p>
               <p><strong>Combustivel:</strong> {vendaEscolhida.combustivel}</p>
               <p><strong>Detalhes:</strong> {vendaEscolhida.detalhes}</p>
-              <p><strong>Vendedor:</strong> {vendaEscolhida.vendedor?.nome}</p>
-              <p><strong>Telefone:</strong> {vendaEscolhida.vendedor?.celular}</p>
-              <p><strong>Local:</strong> {vendaEscolhida.vendedor?.cidade}</p>
+              <p><strong>Vendedor:</strong> {vendedor.nome}</p>
+              <p><strong>Telefone:</strong> {vendedor.celular}</p>
+              <p><strong>Local:</strong> {vendedor.cidade}</p>
               
             </div>
           </div>

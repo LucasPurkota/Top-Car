@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react";
+import React, { useEffect } from "react";
 import './Comprar.css';
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
@@ -8,7 +8,12 @@ import Cards from "../components/Cards/Cards";
 import { useStore } from "@/app/store/store";
 
 export default function(){
-  const {vendas} = useStore();
+  const {vendas, getSaleDataDBAll, getUserDataDBAll} = useStore();
+
+  useEffect(() => {
+    getUserDataDBAll()
+    getSaleDataDBAll()
+  })
   return(
     <>
     <Header/>
@@ -16,8 +21,8 @@ export default function(){
     <div className="carrosVenda">
         <h1 className="my-2">Carros a Venda</h1>
         <div className="cardsCarrosVenda">
-          {vendas.map((venda, index) => <Cards key={index} id={venda.id} img={venda.imagem} titulo={venda.marca} texto1={venda.modelo} subtitulo={venda.valor}
-          texto2={venda.ano} local={venda.vendedor?.cidade}/>)}
+          {vendas.map((venda, index) => <Cards key={index} id={venda.id}  titulo={venda.marca} texto1={venda.modelo} subtitulo={venda.valor}
+          texto2={venda.ano} />)}
         </div>
       </div>
     </main>

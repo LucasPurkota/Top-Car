@@ -8,6 +8,7 @@ import Button from "../components/Button/Button";
 import { Usuario, Venda, TesteVenda, useStore } from "../store/store";
 import { useState } from "react";
 import Modal from 'react-modal';
+import Cards from "../components/Cards/Cards";
 
 
 
@@ -25,7 +26,7 @@ export default function Vender() {
   const [valor, setValor] = useState<number>();
   // const [imagem, setImagem] = useState<string>('');
 
-  const { createSaleDB, usuarioEscolhido } = useStore();
+  const { createSaleDB, usuarioEscolhido, vendasTeste} = useStore();
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();

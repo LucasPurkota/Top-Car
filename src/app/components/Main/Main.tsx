@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from 'react-bootstrap/Carousel';
 import Cards from "../Cards/Cards";
 import './Main.css';
@@ -8,7 +8,12 @@ import { useStore } from "@/app/store/store";
 
 
 export default function Main() {
-  const {vendas} = useStore();
+  const {vendas, vendedor, getSaleDataDBAll, getUserDataDBAll, getUserData} = useStore();
+
+  useEffect(() => {
+    getUserDataDBAll()
+    getSaleDataDBAll()
+  }, []);
 
   const [index, setIndex] = useState(0);
 
@@ -45,8 +50,8 @@ export default function Main() {
       <div className="carrosVenda">
         <h1 className="">Carros a Venda</h1>
         <div className="cardsCarrosVenda">
-          {vendas.map((venda, index) => <Cards key={index} id={venda.id} img={venda.imagem} titulo={venda.marca} texto1={venda.modelo} subtitulo={venda.valor}
-          texto2={venda.ano} local={venda.vendedor?.cidade}/>)}
+          {vendas.map((venda, index) => <Cards key={index} id={venda.id} titulo={venda.marca} texto1={venda.modelo} subtitulo={venda.valor}
+          texto2={venda.ano} {...() => getUserData(venda.vendedor)} local={vendedor.cidade}/>)}
         </div>
       </div>
     </main>
