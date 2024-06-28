@@ -14,7 +14,7 @@ export interface Venda {
 }
 
 export interface Usuario {
-  id?: string;
+  id: string;
   cpf?: string;
   nome?: string;
   email?: string;
@@ -37,7 +37,7 @@ interface UseStore {
   usuarios: Usuario[];
   usuarioEscolhido: Usuario;
   createUserDB: (user: Usuario) => void;
-  getUserDataDB: (user: Usuario) => Usuario;
+  getUserDataDB: (user: Usuario) => any;
   getUserDataDBAll: () => void;
   updateUserDB: (user: Usuario) => void;
   deleteUserDB: (_id: string) => void;
@@ -53,8 +53,8 @@ export const useStore = create<UseStore>((set) => {
   return {
     //objects
     vendaEscolhida: {id: "", vendedor: ""},
-    usuarioEscolhido: {},
-    vendedor: {},
+    usuarioEscolhido: {id: ""},
+    vendedor: {id: ""},
     isLogged: false,
 
     //arrays

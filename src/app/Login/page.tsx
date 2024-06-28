@@ -25,6 +25,7 @@ export default function Login() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const usuario: Usuario = {
+      id: "",
       email: email,
       senha: senha,
     }
