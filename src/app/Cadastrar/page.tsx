@@ -29,6 +29,7 @@ export default function Cadastrar() {
     event.preventDefault();
     if (confSenha == senha) {
       const usuario: Usuario = {
+        id:"",
         cpf: cpf,
         nome: nome,
         email: email,

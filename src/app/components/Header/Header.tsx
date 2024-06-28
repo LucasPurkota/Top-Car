@@ -18,7 +18,7 @@ export default function Header() {
 
   const logout = () => {
     useStore.setState({ isLogged: false });
-    useStore.setState({ usuarioEscolhido: {} });
+    useStore.setState({ usuarioEscolhido: {id:""} });
   }
 
   return (
@@ -31,7 +31,7 @@ export default function Header() {
       </div>
       <nav className="navigation">
         <Link href="/Comprar">Comprar</Link>
-        <Link href="/Vender">Vender</Link>
+        {isLogged && <Link href="/Vender">Vender</Link>}
       </nav>
       <div className="log">
         {!isLogged && <Link className="login" href="/Login">Login</Link>}
@@ -45,7 +45,7 @@ export default function Header() {
         </button>
         {isOpen && <div className="navigation-hamburguer">
           <Link className="links-mobile" href="/Comprar">Comprar</Link>
-          <Link className="links-mobile" href="/Vender">Vender</Link>
+          {isLogged && <Link className="links-mobile" href="/Vender">Vender</Link>}
           {!isLogged && <Link className="login" href="/Login">Login</Link>}
           {!isLogged && <Link className="cadastro" href="/Cadastrar">Cadastrar</Link>}
           {isLogged && <Link className="perfil" href="/Perfil">Perfil</Link>}

@@ -74,7 +74,7 @@ const Cards = (values: params): ReactNode => {
     event.preventDefault();
     console.log(vendaEscolhida)
     deleteSaleDB(vendaEscolhida.id || "")
-    setMessage('vendedor deletado com sucesso');
+    setMessage('Venda deletada com sucesso');
     setShowMessage(true);
   }
 
