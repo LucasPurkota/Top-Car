@@ -9,6 +9,7 @@ export interface Venda {
   combustivel?: string;
   detalhes?: string;
   valor?: number;
+  cidade?: string;
   vendedor: string;
   // imagem?: string;
 }
@@ -52,9 +53,9 @@ interface UseStore {
 export const useStore = create<UseStore>((set) => {
   return {
     //objects
-    vendaEscolhida: {id: "", vendedor: ""},
-    usuarioEscolhido: {id: ""},
-    vendedor: {id: ""},
+    vendaEscolhida: { id: "", vendedor: "" },
+    usuarioEscolhido: { id: "" },
+    vendedor: { id: "" },
     isLogged: false,
 
     //arrays
@@ -64,13 +65,15 @@ export const useStore = create<UseStore>((set) => {
 
 
     //function
+    //busca em arrays
     getSaleData: (id) => set((state) => ({
       vendaEscolhida: state.vendas.filter(item => item.id == id)[0]
     })),
     getUserData: (id) => set((state) => ({
       vendedor: state.usuarios.filter(item => item.id == id)[0],
-      
+
     })),
+    //usuarios
     createUserDB: async (user) => {
       await fetch('http://localhost:4000/api/usuario/create', {
         method: 'POST',
@@ -98,26 +101,30 @@ export const useStore = create<UseStore>((set) => {
           console.log(data[0])
           const id = data[0]._id
           data[0].id = id
-          useStore.setState({usuarioEscolhido: data[0]});
+          useStore.setState({ usuarioEscolhido: data[0] });
           return data[0];
         }
         return null;
       } catch (error) {
         console.error('Error fetching user data:', error);
-        return null;
-      }
+        return null;
+      }
     },
     getUserDataDBAll: async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/usuario/getAll', 
-          {method: 'GET',});
+        const response = await fetch('http://localhost:4000/api/usuario/getAll',
+          { method: 'GET', });
         const data = await response.json();
         if (data && data.length > 0) {
+          for (let i = 0; i < data.length; i++) {
+            const id = data[i]._id
+            data[i].id = id
+          }
           useStore.setState({ usuarios: data });
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
-      }
+      }
     },
     updateUserDB: async (user) => {
       await fetch('http://localhost:4000/api/usuario/update', {
@@ -127,25 +134,26 @@ export const useStore = create<UseStore>((set) => {
         },
         body: JSON.stringify(user),
       })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch((error) => {
-        console.error('Erro:', error);
-      });
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => {
+          console.error('Erro:', error);
+        });
     },
-    deleteUserDB: async (id) =>{
+    deleteUserDB: async (id) => {
       await fetch(`http://localhost:4000/api/usuario/delete/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
       })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch((error) => {
-        console.error('Erro:', error);
-      });
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => {
+          console.error('Erro:', error);
+        });
     },
+    //vendas
     createSaleDB: async (sale) => {
       await fetch('http://localhost:4000/api/venda/create', {
         method: 'POST',
@@ -170,29 +178,33 @@ export const useStore = create<UseStore>((set) => {
         });
         const data = await response.json();
         if (data && data.length > 0) {
-          console.log(data[0])
-          const id = data[0]._id
-          data[0].id = id
-          useStore.setState({vendaEscolhida: data[0]});
-          return data[0];
-        }
-        return null;
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-        return null;
-      }
-    },
-    getSaleDataDBAll: async () => {
-      try {
-        const response = await fetch('http://localhost:4000/api/venda/getAll', 
-          {method: 'GET',});
-        const data = await response.json();
-        if (data && data.length > 0) {
+          for (let i = 0; i < data.length; i++) {
+            const id = data[i]._id
+            data[i].id = id
+            console.log(id)
+          }
           useStore.setState({ vendas: data });
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
-      }
+        return null;
+      }
+    },
+    getSaleDataDBAll: async () => {
+      try {
+        const response = await fetch('http://localhost:4000/api/venda/getAll',
+          { method: 'GET', });
+        const data = await response.json();
+        if (data && data.length > 0) {
+          for (let i = 0; i < data.length; i++) {
+            const id = data[i]._id
+            data[i].id = id
+          }
+          useStore.setState({ vendas: data });
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
     },
     updateSaleDB: async (sale) => {
       await fetch('http://localhost:4000/api/venda/update', {
@@ -202,24 +214,24 @@ export const useStore = create<UseStore>((set) => {
         },
         body: JSON.stringify(sale),
       })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch((error) => {
-        console.error('Erro:', error);
-      });
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => {
+          console.error('Erro:', error);
+        });
     },
-    deleteSaleDB: async (id) =>{
+    deleteSaleDB: async (id) => {
       await fetch(`http://localhost:4000/api/venda/delete/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
         },
       })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch((error) => {
-        console.error('Erro:', error);
-      });
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => {
+          console.error('Erro:', error);
+        });
     }
   }
 })

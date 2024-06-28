@@ -50,8 +50,8 @@ export default function Main() {
       <div className="carrosVenda">
         <h1 className="">Carros a Venda</h1>
         <div className="cardsCarrosVenda">
-          {vendas.map((venda, index) => <Cards key={index} id={venda.id} titulo={venda.marca} texto1={venda.modelo} subtitulo={venda.valor}
-          texto2={venda.ano} {...() => getUserData(venda.vendedor)} local={vendedor.cidade}/>)}
+          {vendas.map((venda, index) => <Cards key={index} id={venda.id} idVendedor={venda.vendedor} titulo={venda.marca} texto1={venda.modelo} subtitulo={venda.valor}
+          texto2={venda.ano} local={venda.cidade}/>)}
         </div>
       </div>
     </main>
